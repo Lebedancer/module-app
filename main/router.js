@@ -1,22 +1,17 @@
-(function(mainModule) {
+import Controller from './controller'
 
-    'use strict';
+export default  Marionette.AppRouter.extend({
+    appRoutes: {
+        '': 'mainPage',
+        '(/)': 'mainPage',
+        'second(/)': 'secondUrl',
 
-    var router = {
-        appRoutes: {
-            '': 'mainPage',
-            '(/)': 'mainPage',
-            'second(/)': 'secondUrl',
+        '*notFound': 'mainPage'
+    },
 
-            '*notFound': 'mainPage'
-        },
+    initialize: function() {
+        this.controller = new Controller();
+        return this;
+    }
+});
 
-        initialize: function() {
-            this.controller = new mainModule.Controller();
-            return this;
-        }
-    };
-
-    mainModule.Router = Marionette.AppRouter.extend(router);
-
-})(window.TestApp);

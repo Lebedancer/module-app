@@ -1,25 +1,20 @@
-(function(mainModule, coreModule) {
+import sandboxEngine from '../core/engines/sandboxEngine';
+import mainSandbox from '../sanboxes/mainSandbox';
+import secondSandbox from '../sanboxes/secondSandbox';
+import App from './app';
 
-    'use strict';
+export default Marionette.Controller.extend({
+    mainPage: function() {
+        sandboxEngine.setSandbox(mainSandbox, {
+            $box: App.mainRegion.$el,
+            app: App
+        });
+    },
 
-    var sandboxEngine = coreModule.Engines.Sandbox;
-
-    mainModule.Controller = Marionette.Controller.extend({
-        mainPage: function() {
-            var currentSandbox = sandboxEngine.setSandbox('MainSandbox', {
-                module: mainModule,
-                $box: mainModule.App.mainRegion.$el
-            });
-
-        },
-
-        secondUrl: function() {
-            var currentSandbox = sandboxEngine.setSandbox('SecondSandbox', {
-                module: mainModule,
-                $box: mainModule.App.mainRegion.$el
-            });
-
-        }
-    });
-
-})(window.TestApp, Md);
+    secondUrl: function() {
+        sandboxEngine.setSandbox(secondSandbox, {
+            $box: App.mainRegion.$el,
+            app: App
+        });
+    }
+});

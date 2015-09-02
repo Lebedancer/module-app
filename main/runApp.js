@@ -1,30 +1,20 @@
-(function(mainModule) {
+import Router from './router';
+import App from './app';
 
-    'use strict';
+export default function() {
+    App.addRegions({
+        mainRegion: '#pageContent'
+    });
 
-    if (!mainModule) {
-        throw 'Md namespace to be defined';
-    }
+    App.addInitializer(function() {
+        App.Vent = new Backbone.Wreqr.EventAggregator();
+        var router = new Router();
+        //var workspace = new currentModule.Workspace();
 
-    var currentModule = mainModule.TestApp;
-    var app = currentModule.App = new Marionette.Application();
+        //currentModule.App.init();
+        Backbone.history.start();
+    });
 
-    currentModule.start = function() {
-        app.addRegions({
-            mainRegion: '#pageContent'
-        });
+    App.start();
+}
 
-        app.addInitializer(function() {
-            var vent = currentModule.Vent = new Backbone.Wreqr.EventAggregator();
-            var router = new currentModule.Router();
-            //var workspace = new currentModule.Workspace();
-
-            //currentModule.App.init();
-            Backbone.history.start();
-        });
-
-        app.start();
-    };
-
-
-})(window);

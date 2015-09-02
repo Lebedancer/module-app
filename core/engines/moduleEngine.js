@@ -27,33 +27,20 @@
         }
 
         return {
-            initializeModules: function(modulesList) {
-                setModulesList(modulesList);
-                if (modulesList.Implementations) {
-                    setModulesList(modulesList.Implementations);
+            createModule: function(module, sandbox) {
+                var currentModule = module;
+                var moduleName = module.Name;
+                var description = module.Descriptions;
+                var workingModule = runModules[module.Name];
+
+                if (!description) {
+                    throw 'module ' + moduleName + ' description must be defined';
                 }
 
-                for (var moduleDescription in modulesList.Descriptions) {
-                    if (modulesList.Descriptions.hasOwnProperty(moduleDescription)) {
-                        descriptions[moduleDescription] = modulesList.Descriptions[moduleDescription];
-                    }
-                }
-
-                return this;
-            },
-            createModule: function(moduleName, sandbox) {
-                var currentModule = modules[moduleName],
-                    description = getDescriptionModule(moduleName, sandbox),
-                    workingModule = runModules[moduleName];
-
-                if (!description) throw 'module ' + moduleName + ' description must be defined';
-
-                if (currentModule) {
-                    if (workingModule && typeof workingModule.refresh === 'function') {
-                        workingModule.refresh(sandbox, description);
-                    } else {
-                        runModules[moduleName] = new currentModule.init(sandbox, description);
-                    }
+                if (workingModule && typeof workingModule.refresh === 'function') {
+                    workingModule.refresh(sandbox, description);
+                } else {
+                    runModules[moduleName] = new currentModule(sandbox, description);
                 }
 
                 return this;

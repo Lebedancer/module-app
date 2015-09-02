@@ -1,11 +1,7 @@
-(function(mainModule) {
+import appStart from './main/runApp';
 
-    'use strict';
-
-    $(function() {
-        if (mainModule.TestApp) {
-            mainModule.TestApp.start();
-        }
-    });
-
-})(window);
+$(function() {
+    if (appStart) {
+        appStart();
+    }
+});
