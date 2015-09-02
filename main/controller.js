@@ -1,4 +1,4 @@
-import sandboxEngine from '../core/engines/sandboxEngine';
+import sandboxEngine from '../core/engines/sandboxEngine/';
 import mainSandbox from '../sanboxes/mainSandbox';
 import secondSandbox from '../sanboxes/secondSandbox';
 import App from './app';
