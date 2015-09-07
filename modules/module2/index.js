@@ -1,4 +1,9 @@
+import Layout from './module2View';
+import model from './module2Model';
+
 export default (sandbox, description) => {
+
+    var $region = sandbox.layout[description.InsertionPoint];
 
     initialize();
 
@@ -18,6 +23,7 @@ export default (sandbox, description) => {
 
     /** @access private */
     function renderModule() {
-
+        var moduleLayout = new Layout();
+        $region.show(moduleLayout);
     }
 }

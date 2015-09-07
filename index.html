@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <script src="dist/app.js"></script>
+
 </head>
 <body>
     <nav>
@@ -17,6 +17,30 @@
             <div id="module1Region"></div>
             <div id="module2Region"></div>
         </script>
+        <script id="module1Layout-Template" type="text/template">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ячейка1</th>
+                        <th>ячейка2</th>
+                        <th>ячейка3</th>
+                        <th>ячейка4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ячейка1</td>
+                        <td>ячейка2</td>
+                        <td>ячейка3</td>
+                        <td>ячейка4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </script>
+        <script id="module2View-Template" type="text/template">
+            <button>Lock table</button>
+        </script>
     </div>
+    <script src="dist/app.js"></script>
 </body>
 </html>

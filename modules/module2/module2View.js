@@ -1,3 +1,3 @@
 export default Marionette.LayoutView.extend({
-    template: '#module1Layout-Template'
+    template: '#module2View-Template'
 })
