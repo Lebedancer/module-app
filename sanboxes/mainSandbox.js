@@ -1,3 +1,6 @@
+import module1 from '../modules/module1';
+import module2 from '../modules/module2';
+
 export default {
     Name: 'MainSandbox',
 
@@ -6,50 +9,22 @@ export default {
     LayoutClass: 'clearfix',
 
     regions: {
-        searchLine: '#searchLine',
-        expertOpinionWidget: '#expertOpinionWidget',
-        checkRosterFtsWidget: '#checkRosterFtsWidget',
-        departmentalInspectionsWidget: '#departmentalInspections',
-        reportsWidget: '#reportsWidget'
+        module1Region: '#module1Region',
+        module2Region: '#module2Region'
     },
 
     Modules: [
         {
-            Name: 'SearchLine',
-            Descriptions: 'SearchLine',
-            InsertionPoint: 'searchLine'
+            Name: 'Module1',
+            Descriptions: 'Тестовый модуль №1',
+            InsertionPoint: 'module1Region',
+            Instance: module1
         },
         {
-            Name: 'ExpertOpinionModule',
-            Descriptions: 'ExpertOpinion',
-            InsertionPoint: 'expertOpinionWidget'
-        },
-        {
-            Name: 'CheckKontragentWidgetModule',
-            Descriptions: 'CheckKontragentWidgetModule',
-            InsertionPoint: 'checkRosterFtsWidget',
-            LayoutRegion: 'checkRosterFtsWidget'
-        },
-        {
-            Name: 'DepartmentalInspectionsWidgetModule',
-            Descriptions: 'DepartmentalInspectionsWidgetModule',
-            InsertionPoint: 'departmentalInspections',
-            LayoutRegion: 'departmentalInspections'
-        },
-        {
-            Name: 'ReportsModule',
-            Descriptions: 'Reports',
-            InsertionPoint: 'reportsWidget'
-        },
-        {
-            Name: 'ConsultantDialog',
-            Descriptions: 'ConsultantDialog',
-            InsertionPoint: ''
-        },
-        {
-            Name: 'WebinarDialog',
-            Descriptions: 'WebinarDialog',
-            InsertionPoint: ''
+            Name: 'Module2',
+            Descriptions: 'Тестовый модуль №1',
+            InsertionPoint: 'module2Region',
+            Instance: module2
         }
     ]
 };

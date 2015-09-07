@@ -1,5 +1,4 @@
 export default function() {
-
     var modules = {},
         descriptions = {},
         runModules = {};
@@ -23,10 +22,10 @@ export default function() {
     }
 
     function createModule(module, sandbox) {
-        var currentModule = module;
+        var description = module;
+        var moduleInstance = module.Instance;
         var moduleName = module.Name;
-        var description = module.Descriptions;
-        var workingModule = runModules[module.Name];
+        var workingModule = runModules[moduleName];
 
         if (!description) {
             throw 'module ' + moduleName + ' description must be defined';
@@ -35,7 +34,7 @@ export default function() {
         if (workingModule && typeof workingModule.refresh === 'function') {
             workingModule.refresh(sandbox, description);
         } else {
-            runModules[moduleName] = new currentModule(sandbox, description);
+            runModules[moduleName] = new moduleInstance(sandbox, description);
         }
 
         return this;
@@ -59,7 +58,8 @@ export default function() {
 
     return {
         getDescriptionModule: getDescriptionModule,
-        getAllRunModule: getAllRunModule
+        getAllRunModule: getAllRunModule,
+        createModule: createModule
     };
 
 }();
