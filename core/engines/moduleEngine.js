@@ -35,13 +35,18 @@ export default function() {
             workingModule.refresh(sandbox, description);
         } else {
             runModules[moduleName] = new moduleInstance(sandbox, description);
+            sandbox.addActiveModule(runModules[moduleName]);
         }
 
         return this;
     }
 
     function deleteModule(nameModule) {
-
+        if (nameModule.destroy) {
+            nameModule.destroy();
+        } else {
+            console.warn(nameModule, 'This module does not method destroy');
+        }
     }
 
     function deleteAllRunningModules() {
@@ -56,9 +61,19 @@ export default function() {
         return runModules;
     }
 
+    /** @access private */
+    function deleteModules(modulesList) {
+        var length = modulesList.length;
+
+        for (var i = 0; i < length; i++) {
+            deleteModule(modulesList[i]);
+        }
+    }
+
     return {
         getDescriptionModule: getDescriptionModule,
         getAllRunModule: getAllRunModule,
+        deleteModules: deleteModules,
         createModule: createModule
     };
 

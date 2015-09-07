@@ -1,55 +1,38 @@
-export default {
-    Name: 'MainSandbox',
+import module3 from '../modules/module3';
+import module4 from '../modules/module4';
+import module5 from '../modules/module5';
 
-    PageTemplateId: 'mainPageTemplate',
+export default {
+    Name: 'SecondSandbox',
+
+    PageTemplateId: 'secondPageTemplate',
 
     LayoutClass: 'clearfix',
 
     regions: {
-        searchLine: '#searchLine',
-        expertOpinionWidget: '#expertOpinionWidget',
-        checkRosterFtsWidget: '#checkRosterFtsWidget',
-        departmentalInspectionsWidget: '#departmentalInspections',
-        reportsWidget: '#reportsWidget'
+        module3Region: '#module3Region',
+        module4Region: '#module4Region',
+        module5Region: '#module5Region'
     },
 
     Modules: [
         {
-            Name: 'SearchLine',
-            Descriptions: 'SearchLine',
-            InsertionPoint: 'searchLine'
+            Name: 'Module3',
+            Descriptions: 'Тестовый модуль №3',
+            InsertionPoint: 'module3Region',
+            Instance: module3
         },
         {
-            Name: 'ExpertOpinionModule',
-            Descriptions: 'ExpertOpinion',
-            InsertionPoint: 'expertOpinionWidget'
+            Name: 'Module4',
+            Descriptions: 'Тестовый модуль №4',
+            InsertionPoint: 'module4Region',
+            Instance: module4
         },
         {
-            Name: 'CheckKontragentWidgetModule',
-            Descriptions: 'CheckKontragentWidgetModule',
-            InsertionPoint: 'checkRosterFtsWidget',
-            LayoutRegion: 'checkRosterFtsWidget'
-        },
-        {
-            Name: 'DepartmentalInspectionsWidgetModule',
-            Descriptions: 'DepartmentalInspectionsWidgetModule',
-            InsertionPoint: 'departmentalInspections',
-            LayoutRegion: 'departmentalInspections'
-        },
-        {
-            Name: 'ReportsModule',
-            Descriptions: 'Reports',
-            InsertionPoint: 'reportsWidget'
-        },
-        {
-            Name: 'ConsultantDialog',
-            Descriptions: 'ConsultantDialog',
-            InsertionPoint: ''
-        },
-        {
-            Name: 'WebinarDialog',
-            Descriptions: 'WebinarDialog',
-            InsertionPoint: ''
+            Name: 'Module5',
+            Descriptions: 'Тестовый модуль №4',
+            InsertionPoint: 'module5Region',
+            Instance: module5
         }
     ]
 };

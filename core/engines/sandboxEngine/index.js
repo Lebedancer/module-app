@@ -7,7 +7,6 @@ export default function() {
     var workingSandbox;
 
     return {
-        initializeSandboxes: initializeSandboxes,
         initializeSandbox: initializeSandbox,
         getSandboxInstance: getSandboxInstance,
         createSandbox: createSandbox,
@@ -33,17 +32,6 @@ export default function() {
     /** @access private */
     function createSandboxInstance(sandboxDescription, initOptions) {
         return new Sandbox(sandboxDescription, initOptions);
-    }
-
-    /** @access public */
-    function initializeSandboxes(sandboxesList) {
-        for (var sandboxName in sandboxesList) {
-            if (sandboxesList.hasOwnProperty(sandboxName)) {
-                sandboxes[sandboxName] = sandboxesList[sandboxName];
-            }
-        }
-
-        return this;
     }
 
     /** @access public */

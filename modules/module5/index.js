@@ -14,6 +14,7 @@ export default (sandbox, description) => {
     return {
         destroy: destroy
     };
+
     /** @access public */
     function destroy() {
         if($region) {

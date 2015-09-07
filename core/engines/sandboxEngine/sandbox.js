@@ -1,3 +1,5 @@
+import moduleEngine from './../moduleEngine';
+
 export default (settings, initOptions) => {
     return {
         Name: settings.Name,
@@ -5,6 +7,7 @@ export default (settings, initOptions) => {
         options: initOptions,
         layout: createLayoutView(initOptions.$box, settings),
         vent: initOptions.app.Vent,
+        activeModules: [],
 
         getIdRootElement: getIdRootElement,
         getBox: getBox,
@@ -14,6 +17,8 @@ export default (settings, initOptions) => {
         bind: bind,
         unbind: unbind,
         unbindAllNamespace: unbindAllNamespace,
+        addActiveModule: addActiveModule,
+        destroy: destroy,
         trigger: trigger
     };
 }
@@ -92,7 +97,18 @@ function trigger(event, data) {
 }
 
 /** @access public */
-function destroy() {}
+function destroy() {
+    moduleEngine.deleteModules(this.activeModules);
+
+    this.activeModules = [];
+}
+
+/** @access private */ 
+function addActiveModule(module) {
+    if(module){
+        this.activeModules.push(module);
+    }
+}
 
 /** @access private */
 function getModuleDescription(moduleName) {
