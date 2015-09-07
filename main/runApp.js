@@ -1,6 +1,6 @@
 import Router from './router';
 import App from './app';
-require('./style.css');
+
 export default function() {
     App.addRegions({
         mainRegion: '#pageContent'

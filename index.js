@@ -1,4 +1,4 @@
-require('./style.css');
+require('./style.less');
 
 import appStart from './main/runApp';
 

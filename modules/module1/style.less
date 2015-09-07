@@ -1,0 +1,37 @@
+.testTable {
+    box-shadow:      0 2px 2px 0 rgba(0, 0, 0, .14),
+                     0 3px 1px -2px rgba(0, 0, 0, .2),
+                     0 1px 5px 0 rgba(0, 0, 0, .12);
+    padding:         10px;
+    border-collapse: collapse;
+
+    tr {
+        &:hover td {
+            background: #fff3e1;
+        }
+
+        td {
+            transition: all 0.15s linear;
+            border-top: 1px solid #404040;
+        }
+
+    }
+
+    td, th {
+        cursor: default;
+        padding: 10px;
+    }
+}
+
+.testButton {
+    background:    green;
+    border:        none;
+    box-shadow:    0 2px 2px 0 rgba(0, 0, 0, .14),
+                   0 3px 1px -2px rgba(0, 0, 0, .2),
+                   0 1px 5px 0 rgba(0, 0, 0, .12);
+    color:         white;
+    cursor:        pointer;
+    border-radius: 2px;
+    padding:       5px 10px;
+    margin-top:    20px;
+}

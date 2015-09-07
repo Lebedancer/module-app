@@ -1,4 +1,4 @@
-require('./style.css');
+require('./style.less');
 
 import Layout from './module1View';
 import model from './module1Model';
@@ -6,6 +6,7 @@ import model from './module1Model';
 export default (sandbox, description) => {
 
     var $region = sandbox.layout[description.InsertionPoint];
+    var vent = sandbox.vent;
 
     initialize();
 
@@ -24,7 +25,9 @@ export default (sandbox, description) => {
 
     /** @access private */
     function renderModule() {
-        var moduleLayout = new Layout();
+        var moduleLayout = new Layout({
+            vent: vent
+        });
         $region.show(moduleLayout);
     }
 }
