@@ -1,9 +1,13 @@
+require('./style.css');
+
 import Layout from './module2View';
 import model from './module2Model';
 
 export default (sandbox, description) => {
 
     var $region = sandbox.layout[description.InsertionPoint];
+    var vent = sandbox.vent;
+    var moduleLayout;
 
     initialize();
 
@@ -13,17 +17,26 @@ export default (sandbox, description) => {
 
     /** @access public */
     function destroy() {
-
+        if($region) {
+            $region.reset();
+        }
     }
 
     /** @access private */
     function initialize() {
         renderModule();
+        bindEvents()
     }
 
     /** @access private */
     function renderModule() {
-        var moduleLayout = new Layout();
+        moduleLayout = new Layout({
+            vent: vent
+        });
         $region.show(moduleLayout);
+    }
+
+    /** @access private */
+    function bindEvents() {
     }
 }

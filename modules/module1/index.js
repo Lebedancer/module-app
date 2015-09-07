@@ -1,3 +1,5 @@
+require('./style.css');
+
 import Layout from './module1View';
 import model from './module1Model';
 
@@ -13,7 +15,6 @@ export default (sandbox, description) => {
 
     /** @access public */
     function destroy() {
-
     }
 
     /** @access private */
