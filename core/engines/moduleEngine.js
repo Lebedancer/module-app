@@ -1,7 +1,7 @@
 export default function() {
-    var modules = {},
-        descriptions = {},
-        runModules = {};
+
+    var descriptions = {};
+    var runModules = {};
 
     function getDescriptionModule(moduleName, sandbox) {
         var descriptionName = sandbox.getDescriptionName(moduleName);
@@ -11,14 +11,6 @@ export default function() {
         }
 
         return descriptions[descriptionName];
-    }
-
-    function setModulesList(modulesList) {
-        for (var moduleName in modulesList) {
-            if (modulesList.hasOwnProperty(moduleName)) {
-                modules[moduleName] = modulesList[moduleName];
-            }
-        }
     }
 
     function createModule(module, sandbox) {
