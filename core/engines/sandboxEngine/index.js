@@ -17,10 +17,9 @@ export default function() {
 
     function initializeModules(sandbox) {
         var modules = sandbox.description.Modules;
-        var i;
         var module = modules[0];
 
-        for (i = 0; i < modules.length; i++, module = modules[i]) {
+        for (var i = 0; i < modules.length; i++, module = modules[i]) {
             initializeModule(module, sandbox);
         }
     }

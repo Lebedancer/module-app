@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="dist/app.css">
 </head>
 <body>
-    <nav class="testNav">
+    <nav class="testNav js-testNav">
         <a class="testNav__item active" href="#">main</a>
         <a class="testNav__item" href="#second/">second</a>
     </nav>
+
     <div id="pageContent"></div>
 
     <div id="pageTemplates">
@@ -19,9 +20,9 @@
         </script>
 
         <script id="secondPageTemplate" type="text/template">
-            <div id="module3Region"></div>
-            <div id="module4Region"></div>
-            <div id="module5Region"></div>
+            <div id="module3Region" class="secondPage__nav"></div>
+            <div id="module4Region" class="secondPage__content"></div>
+            <div id="module5Region" class="secondPage__footer"></div>
         </script>
 
         <script id="module1Layout-Template" type="text/template">

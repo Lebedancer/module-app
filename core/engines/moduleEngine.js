@@ -1,72 +1,69 @@
-export default function() {
+var descriptions = {};
+var runModules = {};
 
-    var descriptions = {};
-    var runModules = {};
+export default {
+    getDescriptionModule,
+    getAllRunModule,
+    deleteModules,
+    createModule
 
-    function getDescriptionModule(moduleName, sandbox) {
-        var descriptionName = sandbox.getDescriptionName(moduleName);
+};
 
-        if (descriptionName === undefined || descriptionName === null) {
-            return descriptions[moduleName];
-        }
+function getDescriptionModule(moduleName, sandbox) {
+    var descriptionName = sandbox.getDescriptionName(moduleName);
 
-        return descriptions[descriptionName];
+    if (descriptionName === undefined || descriptionName === null) {
+        return descriptions[moduleName];
     }
 
-    function createModule(module, sandbox) {
-        var description = module;
-        var moduleInstance = module.Instance;
-        var moduleName = module.Name;
-        var workingModule = runModules[moduleName];
+    return descriptions[descriptionName];
+}
 
-        if (!description) {
-            throw 'module ' + moduleName + ' description must be defined';
-        }
+function createModule(module, sandbox) {
+    var description = module;
+    var moduleInstance = module.Instance;
+    var moduleName = module.Name;
+    var workingModule = runModules[moduleName];
 
-        if (workingModule && typeof workingModule.refresh === 'function') {
-            workingModule.refresh(sandbox, description);
-        } else {
-            runModules[moduleName] = new moduleInstance(sandbox, description);
-            sandbox.addActiveModule(runModules[moduleName]);
-        }
-
-        return this;
+    if (!description) {
+        throw 'module ' + moduleName + ' description must be defined';
     }
 
-    function deleteModule(nameModule) {
-        if (nameModule.destroy) {
-            nameModule.destroy();
-        } else {
-            console.warn(nameModule, 'This module does not method destroy');
-        }
+    if (workingModule && typeof workingModule.refresh === 'function') {
+        workingModule.refresh(sandbox, description);
+    } else {
+        runModules[moduleName] = new moduleInstance(sandbox, description);
+        sandbox.addActiveModule(runModules[moduleName]);
     }
 
-    function deleteAllRunningModules() {
-        for (var moduleItem in runModules) if (runModules.hasOwnProperty(moduleItem)) {
-            runModules[moduleItem].destroy();
-            runModules[moduleItem] = null;
-            delete runModules[moduleItem];
-        }
+    return this;
+}
+
+function deleteModule(nameModule) {
+    if (nameModule.destroy) {
+        nameModule.destroy();
+    } else {
+        console.warn(nameModule, 'This module does not method destroy');
     }
+}
 
-    function getAllRunModule() {
-        return runModules;
+function deleteAllRunningModules() {
+    for (var moduleItem in runModules) if (runModules.hasOwnProperty(moduleItem)) {
+        runModules[moduleItem].destroy();
+        runModules[moduleItem] = null;
+        delete runModules[moduleItem];
     }
+}
 
-    /** @access private */
-    function deleteModules(modulesList) {
-        var length = modulesList.length;
+function getAllRunModule() {
+    return runModules;
+}
 
-        for (var i = 0; i < length; i++) {
-            deleteModule(modulesList[i]);
-        }
+/** @access private */
+function deleteModules(modulesList) {
+    var length = modulesList.length;
+
+    for (var i = 0; i < length; i++) {
+        deleteModule(modulesList[i]);
     }
-
-    return {
-        getDescriptionModule: getDescriptionModule,
-        getAllRunModule: getAllRunModule,
-        deleteModules: deleteModules,
-        createModule: createModule
-    };
-
-}();
+}

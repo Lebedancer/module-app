@@ -1,5 +1,5 @@
-import module1 from '../modules/module1';
-import module2 from '../modules/module2';
+import module1 from '../../modules/module1';
+import module2 from '../../modules/module2';
 
 export default {
     Name: 'MainSandbox',
@@ -7,7 +7,6 @@ export default {
     PageTemplateId: 'mainPageTemplate',
 
     LayoutClass: 'clearfix',
-
     regions: {
         module1Region: '#module1Region',
         module2Region: '#module2Region'

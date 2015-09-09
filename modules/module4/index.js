@@ -2,6 +2,7 @@ require('./style.css');
 
 import Layout from './module4View';
 import model from './module4Model';
+import moduleEngine from '../../core/engines/moduleEngine';
 
 export default (sandbox, description) => {
 
@@ -14,7 +15,7 @@ export default (sandbox, description) => {
     return {
         destroy: destroy
     };
-``
+
     /** @access public */
     function destroy() {
         if($region) {

@@ -1,6 +1,6 @@
-import module3 from '../modules/module3';
-import module4 from '../modules/module4';
-import module5 from '../modules/module5';
+import module3 from '../../modules/module3';
+import module4 from '../../modules/module4';
+import module5 from '../../modules/module5';
 
 export default {
     Name: 'SecondSandbox',
