@@ -1,12 +1,11 @@
-var descriptions = {};
-var runModules = {};
+let descriptions = {};
+let runModules = {};
 
 export default {
     getDescriptionModule,
     getAllRunModule,
     deleteModules,
     createModule
-
 };
 
 function getDescriptionModule(moduleName, sandbox) {

@@ -1,4 +1,6 @@
-import module3 from '../../modules/module3';
+require('./style.less');
+
+import secondNav from '../../modules/secondNav';
 import module4 from '../../modules/module4';
 import module5 from '../../modules/module5';
 
@@ -20,7 +22,7 @@ export default {
             Name: 'Module3',
             Descriptions: 'Тестовый модуль №3',
             InsertionPoint: 'module3Region',
-            Instance: module3
+            Instance: secondNav
         },
         {
             Name: 'Module4',

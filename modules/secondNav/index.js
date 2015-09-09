@@ -1,4 +1,4 @@
-require('./style.css');
+require('./style.less');
 
 import Layout from './module3View';
 import model from './module3Model';
