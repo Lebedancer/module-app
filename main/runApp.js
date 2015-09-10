@@ -8,7 +8,6 @@ export default function() {
     });
 
     App.addInitializer(function() {
-        App.Vent = new Backbone.Wreqr.EventAggregator();
         var router = new Router();
         //var workspace = new currentModule.Workspace();
 

@@ -57,6 +57,11 @@ export default function() {
             }
 
             workingSandbox = createSandboxInstance(sandboxDescription, options);
+
+            if(sandboxDescription.Dispatcher) {
+                runningSandboxDispatcher = new sandboxDescription.Dispatcher(options);
+            }
+
             return workingSandbox;
         }
     }
@@ -68,16 +73,14 @@ export default function() {
 
     /** @access public */
     function deleteAllRunningSandboxes() {
-
+        runningSandboxDispatcher && runningSandboxDispatcher.destroy();
     }
 
     /** @access public */
     function setSandbox(sandboxDescription, options) {
-        var runningSandbox =  this.createSandbox(sandboxDescription, options);
+        options.channel = Backbone.Wreqr.radio.channel(sandboxDescription.Name);
 
-        if(sandboxDescription.Dispatcher) {
-            runningSandboxDispatcher = new sandboxDescription.Dispatcher();
-        }
+        var runningSandbox =  this.createSandbox(sandboxDescription, options);
 
         initializeModules(runningSandbox);
     }

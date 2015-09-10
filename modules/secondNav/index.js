@@ -4,7 +4,6 @@ import Layout from './module3View';
 import model from './module3Model';
 
 export default (sandbox, description) => {
-
     var $region = sandbox.layout[description.InsertionPoint];
     var vent = sandbox.vent;
     var moduleLayout;

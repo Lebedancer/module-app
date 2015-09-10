@@ -7,7 +7,7 @@ export default (settings, initOptions) => {
         description: settings,
         options: initOptions,
         layout: createLayoutView(initOptions.$box, settings),
-        vent: initOptions.app.Vent,
+        channel: initOptions.channel,
         activeModules: [],
 
         getIdRootElement,
