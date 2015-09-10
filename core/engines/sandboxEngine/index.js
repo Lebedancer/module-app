@@ -5,14 +5,15 @@ import Sandbox from './sandbox';
 export default function() {
     var sandboxes = {};
     var workingSandbox;
+    var runningSandboxDispatcher;
 
     return {
-        initializeSandbox: initializeSandbox,
-        getSandboxInstance: getSandboxInstance,
-        createSandbox: createSandbox,
-        deleteSandbox: deleteSandbox,
-        deleteAllRunningSandboxes: deleteAllRunningSandboxes,
-        setSandbox:setSandbox
+        initializeSandbox,
+        getSandboxInstance,
+        createSandbox,
+        deleteSandbox,
+        deleteAllRunningSandboxes,
+        setSandbox
     };
 
     function initializeModules(sandbox) {
@@ -72,7 +73,12 @@ export default function() {
 
     /** @access public */
     function setSandbox(sandboxDescription, options) {
-        var runingSandbox =  this.createSandbox(sandboxDescription, options);
-        initializeModules(runingSandbox);
+        var runningSandbox =  this.createSandbox(sandboxDescription, options);
+
+        if(sandboxDescription.Dispatcher) {
+            runningSandboxDispatcher = new sandboxDescription.Dispatcher();
+        }
+
+        initializeModules(runningSandbox);
     }
 }();

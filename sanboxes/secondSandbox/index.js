@@ -3,6 +3,7 @@ require('./style.less');
 import secondNav from '../../modules/secondNav';
 import module4 from '../../modules/module4';
 import module5 from '../../modules/module5';
+import Dispatcher from './dispatcher';
 
 export default {
     Name: 'SecondSandbox',
@@ -10,7 +11,7 @@ export default {
     PageTemplateId: 'secondPageTemplate',
 
     LayoutClass: 'clearfix',
-
+    Dispatcher,
     regions: {
         module3Region: '#module3Region',
         module4Region: '#module4Region',

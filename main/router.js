@@ -1,17 +1,12 @@
-import Controller from './controller'
+import controller from './controller'
 
 export default  Marionette.AppRouter.extend({
+    controller,
     appRoutes: {
-        '': 'mainPage',
         '(/)': 'mainPage',
-        'second(/)': 'secondUrl',
+        'second(/)*params': 'secondUrl',
 
         '*notFound': 'mainPage'
-    },
-
-    initialize: function() {
-        this.controller = new Controller();
-        return this;
     }
 });
 

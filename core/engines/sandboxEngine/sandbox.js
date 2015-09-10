@@ -1,6 +1,7 @@
 import moduleEngine from './../moduleEngine';
 
 export default (settings, initOptions) => {
+
     return {
         Name: settings.Name,
         description: settings,
@@ -9,17 +10,17 @@ export default (settings, initOptions) => {
         vent: initOptions.app.Vent,
         activeModules: [],
 
-        getIdRootElement: getIdRootElement,
-        getBox: getBox,
-        getTemplate: getTemplate,
-        getLayoutRegion: getLayoutRegion,
-        getDescriptionName: getDescriptionName,
-        bind: bind,
-        unbind: unbind,
-        unbindAllNamespace: unbindAllNamespace,
-        addActiveModule: addActiveModule,
-        destroy: destroy,
-        trigger: trigger
+        getIdRootElement,
+        getBox,
+        getTemplate,
+        getLayoutRegion,
+        getDescriptionName,
+        bind,
+        unbind,
+        unbindAllNamespace,
+        addActiveModule,
+        destroy,
+        trigger
     };
 }
 
@@ -120,11 +121,11 @@ function getModuleDescription(moduleName) {
         }
     }
 
-    for (i = 0, currentModule = this.description.RouterModules[0]; i < this.description.RouterModules.length; i++, currentModule = this.description.RouterModules[i]) {
-        if (currentModule.Name === moduleName) {
-            return currentModule;
-        }
-    }
+    //for (i = 0, currentModule = this.description.RouterModules[0]; i < this.description.RouterModules.length; i++, currentModule = this.description.RouterModules[i]) {
+    //    if (currentModule.Name === moduleName) {
+    //        return currentModule;
+    //    }
+    //}
 
     return null;
 }
