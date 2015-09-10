@@ -33,7 +33,7 @@ export default ($region, channel) => {
 
     /** @access private */
     function bindEvents() {
-        channel.vent.on('change:menuItem', renderModule)
+        channel.vent.on('page:change', renderModule)
     }
     
     /** @access private */ 

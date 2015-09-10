@@ -1,9 +1,10 @@
 export default (options) => {
 
-    var data = {
+    let data = {
         page: 1
     };
-    var request = options.channel.reqres;
+    let request = options.channel.reqres;
+    let vent = options.channel.vent;
 
     initialize();
 
@@ -25,7 +26,7 @@ export default (options) => {
 
     /** @access private */
     function bindEvents() {
-
+        vent.on('page:change', setPage)
     }
 
     /** @access private */
@@ -39,6 +40,13 @@ export default (options) => {
     function getQueryAttrs() {
         if (options.query) {
             return options.query.split('/');
+        }
+    }
+
+    /** @access private */
+    function setPage(itemCode) {
+        if(itemCode){
+            data.page = itemCode;
         }
     }
 }
