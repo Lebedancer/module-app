@@ -1,13 +1,8 @@
-require('./style.css');
-
 import Layout from './module4View';
 import model from './module4Model';
-import moduleEngine from '../../core/engines/moduleEngine';
 
-export default (sandbox, description) => {
+export default ($region, channel) => {
 
-    var $region = sandbox.layout[description.InsertionPoint];
-    var vent = sandbox.vent;
     var moduleLayout;
 
     initialize();
@@ -32,7 +27,7 @@ export default (sandbox, description) => {
     /** @access private */
     function renderModule() {
         moduleLayout = new Layout({
-            vent: vent
+            channel
         });
         $region.show(moduleLayout);
     }

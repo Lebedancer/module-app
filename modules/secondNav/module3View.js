@@ -1,4 +1,4 @@
-let channel;
+let reqres;
 
 export default Marionette.LayoutView.extend({
     template: '#secondNav-Template',
@@ -10,8 +10,8 @@ export default Marionette.LayoutView.extend({
 })
 
 /** @access private */
-function initialize() {
-    debugger;
+function initialize(options) {
+    reqres = options.channel.reqres;
 }
 
 /** @access private */
@@ -21,11 +21,14 @@ function onRender() {
 
 /** @access private */
 function selectDefaultItem() {
-    var currentItem =
-    selectItem();
+    let currentItem = reqres.request('getCurrentPage');
+    selectItem.call(this, currentItem);
 }
 
 /** @access private */
-function selectItem() {
+function selectItem(selectedItem) {
+    var $selectedItem = this.ui.items.filter(`[data-item=${selectedItem}]`);
 
+    this.ui.items.removeClass('active');
+    $selectedItem.addClass('active');
 }

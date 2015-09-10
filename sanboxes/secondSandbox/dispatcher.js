@@ -1,14 +1,15 @@
 export default (options) => {
 
-    var data = setData();
-    var request = options.app.channel.reqres;
+    var data = {
+        page: 1
+    };
+    var request = options.channel.reqres;
 
-    //if (data) {
-        initialize();
-    //}
+    initialize();
 
     /** @access private */
     function initialize() {
+        setData.call(this);
         bindEvents.call(this);
         bindRequests.call(this);
     }
@@ -18,9 +19,7 @@ export default (options) => {
         var attrs = getQueryAttrs();
 
         if (attrs && attrs.length) {
-            return {
-                page: attrs[0]
-            }
+            data.page = attrs[0];
         }
     }
 
@@ -31,9 +30,9 @@ export default (options) => {
 
     /** @access private */
     function bindRequests() {
-        request.setHandler('getCurrentPage', function () {
+        request.setHandler('getCurrentPage', function() {
             return data.page
-        })
+        });
     }
 
     /** @access private */

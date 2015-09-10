@@ -24,6 +24,10 @@ function createModule(module, sandbox) {
     var moduleName = module.Name;
     var workingModule = runModules[moduleName];
 
+    var $region = sandbox.layout[description.InsertionPoint];
+    var channel = sandbox.channel;
+
+
     if (!description) {
         throw 'module ' + moduleName + ' description must be defined';
     }
@@ -31,7 +35,7 @@ function createModule(module, sandbox) {
     if (workingModule && typeof workingModule.refresh === 'function') {
         workingModule.refresh(sandbox, description);
     } else {
-        runModules[moduleName] = new moduleInstance(sandbox, description);
+        runModules[moduleName] = new moduleInstance($region, channel);
         sandbox.addActiveModule(runModules[moduleName]);
     }
 
