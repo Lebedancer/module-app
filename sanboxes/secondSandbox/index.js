@@ -1,9 +1,8 @@
 require('./style.less');
 
-import secondNav from '../../modules/secondNav';
-import module4 from '../../modules/module4';
-import module5 from '../../modules/module5';
 import Dispatcher from './dispatcher';
+import secondNav from '../../modules/secondNav';
+import secondContentModule from '../../modules/secondContentModule';
 
 export default {
     Name: 'SecondSandbox',
@@ -26,16 +25,10 @@ export default {
             Instance: secondNav
         },
         {
-            Name: 'Module4',
+            Name: 'Content module',
             Descriptions: 'Тестовый модуль №4',
             InsertionPoint: 'module4Region',
-            Instance: module4
-        },
-        {
-            Name: 'Module5',
-            Descriptions: 'Тестовый модуль №4',
-            InsertionPoint: 'module5Region',
-            Instance: module5
+            Instance: secondContentModule
         }
     ]
 };
