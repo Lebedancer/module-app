@@ -1,12 +1,9 @@
 require('./style.less');
 
-import Layout from './secondContentModuleLayout';
-import model from './module3Model';
+import Layout from './part1Layout';
 
-export default (sandbox, description) => {
+export default ($region, channel) => {
 
-    var $region = sandbox.layout[description.InsertionPoint];
-    var vent = sandbox.vent;
     var moduleLayout;
 
     initialize();
@@ -31,7 +28,7 @@ export default (sandbox, description) => {
     /** @access private */
     function renderModule() {
         moduleLayout = new Layout({
-            vent: vent
+            channel
         });
         $region.show(moduleLayout);
     }

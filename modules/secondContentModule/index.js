@@ -1,7 +1,7 @@
 require('./style.less');
 
 import Layout from './secondContentModuleLayout';
-import module4 from '../module4';
+import part1Module from './modules/part1';
 import module5 from '../module5';
 
 export default ($region, channel) => {
@@ -43,7 +43,7 @@ export default ($region, channel) => {
 
         switch (currentItem) {
             case 1:
-                childModule = module4;
+                childModule = part1Module;
                 break;
             case 2:
                 childModule = module5;

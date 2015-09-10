@@ -1,3 +1,3 @@
 export default Marionette.LayoutView.extend({
-    template: '#secondNav-Template'
+    template: '#part1Layout-Template'
 })
