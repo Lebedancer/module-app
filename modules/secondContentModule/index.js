@@ -2,7 +2,7 @@ require('./style.less');
 
 import Layout from './secondContentModuleLayout';
 import part1Module from './modules/part1';
-import module5 from '../module5';
+import greenCube from '../greenCube';
 
 export default ($region, channel) => {
 
@@ -46,7 +46,7 @@ export default ($region, channel) => {
                 childModule = part1Module;
                 break;
             case 2:
-                childModule = module5;
+                childModule = greenCube;
                 break;
         }
 

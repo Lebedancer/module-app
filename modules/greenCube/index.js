@@ -1,5 +1,4 @@
-import Layout from './module5View';
-import model from './module5Model';
+import Layout from './greenCubeView';
 
 export default ($region, channel) => {
     var moduleLayout;
